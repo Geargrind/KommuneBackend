@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,5 +38,11 @@ public class ApiServiceKommunerImpI implements ApiServiceKommuner {
         List<Kommune> kommuneList = listResponseEntity.getBody();
         saveKommuner(kommuneList);
         return kommuneList;
+    }
+
+    @Override
+    public String deleteKommune(String kode) {
+        kommuneRepository.deleteById(kode);
+        return "Kommune is delete";
     }
 }
